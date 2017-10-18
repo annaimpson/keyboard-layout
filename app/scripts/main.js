@@ -1,111 +1,79 @@
-function myFunction(e){
+function keyboardFunc(e){
   e.preventDefault();
   var x = e.keyCode;
-  console.log(x);
-  var keychar = String.fromCharCode(x);
   var textarea = document.getElementsByTagName("textarea")[0];
-  var res = keychar.substring(1);
+  // var iso = {
+  //    81: 'q',
+  //    87: 'w',
+  //    69: 'e',
+  //    82: 'r',
+  //    84: 't',
+  //    89: 'y',
+  //    85: 'u',
+  //    73: 'i',
+  //    79: 'o',
+  //    80: 'p',
+  //    65: 'a',
+  //    83: 's',
+  //    68: 'd',
+  //    70: 'f',
+  //    71: 'g',
+  //    72: 'h',
+  //    74: 'j',
+  //    75: 'k',
+  //    76: 'l',
+  //    90: 'z',
+  //    88: 'x',
+  //    67: 'c',
+  //    86: 'v',
+  //    66: 'b',
+  //    78: 'n',
+  //    77: 'm'
+  // };
+  var dvorak = {
+    82: 'p',
+    84: 'y',
+    89: 'f',
+    85: 'g',
+    73: 'c',
+    79: 'r',
+    80: 'l',
+    65: 'a',
+    83: 'o',
+    68: 'e',
+    70: 'u',
+    71: 'i',
+    72: 'd',
+    74: 'h',
+    75: 't',
+    76: 'n',
+    186: 's',
+    88: 'q',
+    67: 'j',
+    86: 'k',
+    66: 'x',
+    78: 'b',
+    77: 'm',
+    188: 'w',
+    190: 'v',
+    191: 'z',
+  };
+  var map = new Map(Object.entries(dvorak));
+  var dvorakObject = Object.entries(dvorak);
+  // var isoObject = Object.entries(iso);
+  console.log(dvorakObject);
 
-  if( e.keyCode == 81 ){
-    textarea.append('"');
+    function keyboardLayout() {
+      for (var i = 1; i < dvorakObject.length; i++) {
+        if( e.keyCode == dvorakObject[i][0]) {
+          console.log(dvorakObject[i][0]);
+          textarea.append(dvorakObject[i][1]);
+          console.log(dvorakObject[i][1]);
+        }
+      }
   }
-  if( e.keyCode == 87 ){
-    textarea.append('<');
-  }
-  if( e.keyCode == 69 ){
-    textarea.append('>');
-  }
-  if( e.keyCode == 82 ){
-    textarea.append('p');
-  }
-  if( e.keyCode == 84 ){
-    textarea.append('y');
-  }
-  if( e.keyCode == 89 ){
-    textarea.append('f');
-  }
-  if( e.keyCode == 85 ){
-    textarea.append('g');
-  }
-  if( e.keyCode == 73 ){
-    textarea.append('c');
-  }
-  if( e.keyCode == 79 ){
-    textarea.append('r');
-  }
-  if( e.keyCode == 80 ){
-    textarea.append('l');
-  }
-  if( e.keyCode == 65 ){
-    textarea.append('a');
-  }
-  if( e.keyCode == 83 ){
-    textarea.append('o');
-  }
-  if( e.keyCode == 68 ){
-    textarea.append('e');
-  }
-  if( e.keyCode == 70 ){
-    textarea.append('u');
-  }
-  if( e.keyCode == 71 ){
-    textarea.append('i');
-  }
-  if( e.keyCode == 72 ){
-    textarea.append('d');
-  }
-  if( e.keyCode == 74 ){
-    textarea.append('h');
-  }
-  if( e.keyCode == 75 ){
-    textarea.append('t');
-  }
-  if( e.keyCode == 76 ){
-    textarea.append('n');
-  }
-  if( e.keyCode == 186 ){
-    textarea.append('s');
-  }
-  if( e.keyCode == 90 ){
-    textarea.append(':');
-  }
-  if( e.keyCode == 88 ){
-    textarea.append('q');
-  }
-  if( e.keyCode == 67 ){
-    textarea.append('j');
-  }
-  if( e.keyCode == 86 ){
-    textarea.append('k');
-  }
-  if( e.keyCode == 66 ){
-    textarea.append('x');
-  }
-  if( e.keyCode == 78 ){
-    textarea.append('b');
-  }
-  if( e.keyCode == 77 ){
-    textarea.append('m');
-  }
-  if( e.keyCode == 188 ){
-    textarea.append('w');
-  }
-  if( e.keyCode == 190 ){
-    textarea.append('v');
-  }
-  if( e.keyCode == 191 ){
-    textarea.append('z');
-  }
-  if( e.keyCode == 9 ){
-    textarea.append('   ');
-  }
-  if( e.keyCode == 32 ){
-    textarea.append(' ');
-  }
-  if( e.keyCode == 8 ){
-    document.getElementById("myId").innerHTML = res;
-  }
+  keyboardLayout();
 }
 
-var myEl = document.getElementById('myId');
-myEl.onkeydown = myFunction;
+var myEl = document.getElementById('textarea');
+myEl.onkeydown = keyboardFunc;
