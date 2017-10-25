@@ -1,4 +1,4 @@
-var textarea = document.getElementsByTagName("textarea")[0];
+var textarea = document.getElementsByTagName('textarea')[0];
 var dvorak = {
   82: 'p',
   84: 'y',
